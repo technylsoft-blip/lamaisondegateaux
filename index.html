@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>La Maison des Gâteaux — Dakar</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+
+    <!-- ===================== BANDEAU ANNONCE ===================== -->
+    <div id="annonce-bar" role="banner" aria-label="Information livraison">
+      <p>⏰ Commandez avant <strong>16h</strong> — livraison disponible le lendemain à Dakar &amp; banlieue</p>
+      <button id="annonce-fermer" aria-label="Fermer le bandeau">✕</button>
+    </div>
+
+    <!-- ===================== NAVBAR ===================== -->
+    <header>
+      <nav>
+        <div id="logo">
+          <img src="assets/logo/logo.svg"
+               alt="Logo La Maison des Gâteaux"
+               width="44" height="44"
+               onerror="this.outerHTML='<svg width=\'44\' height=\'44\' viewBox=\'0 0 36 36\' fill=\'none\' aria-hidden=\'true\'><circle cx=\'18\' cy=\'18\' r=\'18\' fill=\'#F2A7BB\'/><path d=\'M10 22c0-4 3-7 8-7s8 3 8 7\' stroke=\'#fff\' stroke-width=\'2\' stroke-linecap=\'round\'/><rect x=\'9\' y=\'22\' width=\'18\' height=\'5\' rx=\'2\' fill=\'#fff\'/><circle cx=\'18\' cy=\'11\' r=\'1.5\' fill=\'#C9A84C\'/></svg>'" />
+          La Maison des Gâteaux
+        </div>
+
+        <button id="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+
+        <ul id="menu">
+          <li><a href="#catalogue">Catalogue</a></li>
+          <li><a href="#categories">Catégories</a></li>
+          <li><a href="#sur-mesure">Sur-mesure</a></li>
+          <li><a href="#temoignages">Avis</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li>
+            <a href="https://wa.me/221709595351" target="_blank" rel="noopener" class="btn btn-primaire">
+              Commander
+            </a>
+          </li>
+        </ul>
+
+        <button id="panier-btn" aria-label="Ouvrir le panier">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <path d="M16 10a4 4 0 01-8 0"/>
+          </svg>
+          <span class="badge" id="panier-badge" aria-live="polite">0</span>
+        </button>
+      </nav>
+    </header>
+
+    <main>
+
+      <!-- ===================== HERO ===================== -->
+      <section id="hero">
+        <div class="container">
+          <div id="hero-accroche">
+            <h1>L'art du sucré,<br><em>fait avec amour</em></h1>
+            <p>Chaque création est préparée le matin même avec des ingrédients soigneusement choisis. Commandez en quelques secondes, livré chez vous à Dakar.</p>
+
+            <div class="hero-badges" aria-label="Nos engagements">
+              <span class="hero-badge">⭐ 4,9/5 · 247 avis</span>
+              <span class="hero-badge">🚀 Réponse en &lt; 2h</span>
+              <span class="hero-badge">🌿 100% fait maison</span>
+            </div>
+
+            <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem;">
+              <a href="#catalogue" id="hero-cta" class="btn btn-primaire">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                </svg>
+                Voir nos gâteaux
+              </a>
+              <a href="#sur-mesure" class="btn btn-secondaire">Commander sur-mesure</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== STATS ===================== -->
+      <section id="stats">
+        <div class="container">
+          <div id="stats-grille">
+            <div class="stat-item">
+              <span class="stat-nombre" data-cible="5">0</span>
+              <span class="stat-unite">ans</span>
+              <span class="stat-label">d'expérience</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-nombre" data-cible="50">0</span>
+              <span class="stat-unite">+</span>
+              <span class="stat-label">créations au catalogue</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-nombre" data-cible="1200">0</span>
+              <span class="stat-unite">+</span>
+              <span class="stat-label">clients satisfaits</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-nombre">4,9</span>
+              <span class="stat-unite">/5</span>
+              <span class="stat-label">note moyenne</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== CATÉGORIES ===================== -->
+      <section id="categories">
+        <div class="container">
+          <h2 class="section-titre">Nos catégories</h2>
+          <div id="filtres" role="group" aria-label="Filtrer les produits">
+            <button class="filtre-btn actif" data-filtre="tous">🎂 Tous</button>
+            <button class="filtre-btn" data-filtre="anniversaire">🎉 Anniversaire</button>
+            <button class="filtre-btn" data-filtre="mariage">💍 Mariage</button>
+            <button class="filtre-btn" data-filtre="bapteme">👶 Baptême</button>
+            <button class="filtre-btn" data-filtre="chocolat">🍫 Chocolat</button>
+            <button class="filtre-btn" data-filtre="fruits">🍓 Fruits</button>
+            <button class="filtre-btn" data-filtre="sur-mesure">✨ Sur-mesure</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== CATALOGUE ===================== -->
+      <section id="catalogue">
+        <div class="container">
+          <h2 class="section-titre">Notre catalogue</h2>
+          <div id="grille-produits">
+
+            <!-- 1 -->
+            <article class="carte-produit" data-category="chocolat">
+              <span class="badge-produit badge-produit--populaire">Populaire</span>
+              <img class="carte-produit__image"
+                   src="assets/images/chocolat-fondant.jpg"
+                   alt="Gâteau Chocolat Fondant — cœur fondant au chocolat noir avec glaçage ganache"
+                   loading="lazy"
+                   width="400" height="300"
+                   onerror="this.src='https://placehold.co/400x300/F2A7BB/3D1C02?text=Chocolat+Fondant';this.onerror=null" />
+              <div class="carte-produit__corps">
+                <h3 class="carte-produit__nom">Gâteau Chocolat Fondant</h3>
+                <p class="carte-produit__desc">Cœur fondant au chocolat noir, glaçage ganache et copeaux croustillants.</p>
+                <div class="carte-produit__pied">
+                  <span class="carte-produit__prix">8 500 F</span>
+                  <button class="carte-produit__ajouter"
+                          data-nom="Gâteau Chocolat Fondant"
+                          data-prix="8500"
+                          data-img="assets/images/chocolat-fondant.jpg">
+                    + Panier
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <!-- 2 -->
+            <article class="carte-produit" data-category="fruits">
+              <img class="carte-produit__image"
+                   src="assets/images/fraisier.jpg"
+                   alt="Fraisier Classique — génoise légère, crème mousseline et fraises fraîches"
+                   loading="lazy"
+                   width="400" height="300"
+                   onerror="this.src='https://placehold.co/400x300/F2A7BB/3D1C02?text=Fraisier+Classique';this.onerror=null" />
+              <div class="carte-produit__corps">
+                <h3 class="carte-produit__nom">Fraisier Classique</h3>
+                <p class="carte-produit__desc">Génoise légère, crème mousseline vanille et fraises fraîches du marché.</p>
+                <div class="carte-produit__pied">
+                  <span class="carte-produit__prix">12 000 F</span>
+                  <button class="carte-produit__ajouter"
+                          data-nom="Fraisier Classique"
+                          data-prix="12000"
+                          data-img="assets/images/fraisier.jpg">
+                    + Panier
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <!-- 3 -->
+            <article class="carte-produit" data-category="anniversaire">
+              <span class="badge-produit badge-produit--nouveau">Nouveau</span>
+              <img class="carte-produit__image"
+                   src="assets/images/layer-cake.jpg"
+                   alt="Layer Cake Arc-en-ciel — 6 couches colorées et crème chantilly"
+                   loading="lazy"
+                   width="400" height="300"
+                   onerror="this.src='https://placehold.co/400x300/F2A7BB/3D1C02?text=Layer+Cake';this.onerror=null" />
+              <div class="carte-produit__corps">
+                <h3 class="carte-produit__nom">Layer Cake Arc-en-ciel</h3>
+                <p class="carte-produit__desc">6 couches colorées, crème chantilly et décorations festives multicolores.</p>
+                <div class="carte-produit__pied">
+                  <span class="carte-produit__prix">18 000 F</span>
+                  <button class="carte-produit__ajouter"
+                          data-nom="Layer Cake Arc-en-ciel"
+                          data-prix="18000"
+                          data-img="assets/images/layer-cake.jpg">
+                    + Panier
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <!-- 4 -->
+            <article class="carte-produit" data-category="mariage sur-mesure">
+              <span class="badge-produit badge-produit--populaire">Populaire</span>
+              <img class="carte-produit__image"
+                   src="assets/images/naked-cake.jpg"
+                   alt="Naked Cake Fleurs — gâteau nu deux étages avec fleurs fraîches comestibles"
+                   loading="lazy"
+                   width="400" height="300"
+                   onerror="this.src='https://placehold.co/400x300/F2A7BB/3D1C02?text=Naked+Cake+Fleurs';this.onerror=null" />
+              <div class="carte-produit__corps">
+                <h3 class="carte-produit__nom">Naked Cake Fleurs</h3>
+                <p class="carte-produit__desc">Gâteau nu à deux étages, fleurs fraîches comestibles et crème vanille.</p>
+                <div class="carte-produit__pied">
+                  <span class="carte-produit__prix">22 000 F</span>
+                  <button class="carte-produit__ajouter"
+                          data-nom="Naked Cake Fleurs"
+                          data-prix="22000"
+                          data-img="assets/images/naked-cake.jpg">
+                    + Panier
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <!-- 5 -->
+            <article class="carte-produit" data-category="bapteme">
+              <img class="carte-produit__image"
+                   src="assets/images/bapteme-nuage.jpg"
+                   alt="Gâteau Baptême Nuage — fondant blanc, nuages en meringue et étoiles dorées"
+                   loading="lazy"
+                   width="400" height="300"
+                   onerror="this.src='https://placehold.co/400x300/F2A7BB/3D1C02?text=Bapteme+Nuage';this.onerror=null" />
+              <div class="carte-produit__corps">
+                <h3 class="carte-produit__nom">Gâteau Baptême Nuage</h3>
+                <p class="carte-produit__desc">Fondant blanc immaculé, nuages en meringue et étoiles dorées à la feuille.</p>
+                <div class="carte-produit__pied">
+                  <span class="carte-produit__prix">15 000 F</span>
+                  <button class="carte-produit__ajouter"
+                          data-nom="Gâteau Baptême Nuage"
+                          data-prix="15000"
+                          data-img="assets/images/bapteme-nuage.jpg">
+                    + Panier
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <!-- 6 -->
+            <article class="carte-produit" data-category="fruits anniversaire">
+              <img class="carte-produit__image"
+                   src="assets/images/tarte-citron.jpg"
+                   alt="Tarte Citron Meringuée — pâte sablée, crème citron et meringue italienne"
+                   loading="lazy"
+                   width="400" height="300"
+                   onerror="this.src='https://placehold.co/400x300/F2A7BB/3D1C02?text=Tarte+Citron';this.onerror=null" />
+              <div class="carte-produit__corps">
+                <h3 class="carte-produit__nom">Tarte Citron Meringuée</h3>
+                <p class="carte-produit__desc">Pâte sablée croustillante, crème citron acidulée et meringue italienne dorée.</p>
+                <div class="carte-produit__pied">
+                  <span class="carte-produit__prix">7 500 F</span>
+                  <button class="carte-produit__ajouter"
+                          data-nom="Tarte Citron Meringuée"
+                          data-prix="7500"
+                          data-img="assets/images/tarte-citron.jpg">
+                    + Panier
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <!-- 7 -->
+            <article class="carte-produit" data-category="anniversaire chocolat">
+              <span class="badge-produit badge-produit--populaire">Populaire</span>
+              <img class="carte-produit__image"
+                   src="assets/images/red-velvet.jpg"
+                   alt="Red Velvet — biscuit rouge velouté et cream cheese onctueuse"
+                   loading="lazy"
+                   width="400" height="300"
+                   onerror="this.src='https://placehold.co/400x300/F2A7BB/3D1C02?text=Red+Velvet';this.onerror=null" />
+              <div class="carte-produit__corps">
+                <h3 class="carte-produit__nom">Red Velvet</h3>
+                <p class="carte-produit__desc">Biscuit rouge velouté, cream cheese onctueuse et décor velours écarlate.</p>
+                <div class="carte-produit__pied">
+                  <span class="carte-produit__prix">14 000 F</span>
+                  <button class="carte-produit__ajouter"
+                          data-nom="Red Velvet"
+                          data-prix="14000"
+                          data-img="assets/images/red-velvet.jpg">
+                    + Panier
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <!-- 8 -->
+            <article class="carte-produit" data-category="chocolat anniversaire">
+              <img class="carte-produit__image"
+                   src="assets/images/tiramisu.jpg"
+                   alt="Tiramisu — biscuits imbibés de café, mascarpone et cacao noir"
+                   loading="lazy"
+                   width="400" height="300"
+                   onerror="this.src='https://placehold.co/400x300/F2A7BB/3D1C02?text=Tiramisu';this.onerror=null" />
+              <div class="carte-produit__corps">
+                <h3 class="carte-produit__nom">Tiramisu</h3>
+                <p class="carte-produit__desc">Biscuits imbibés de café, mascarpone léger et cacao noir en poudre fine.</p>
+                <div class="carte-produit__pied">
+                  <span class="carte-produit__prix">11 000 F</span>
+                  <button class="carte-produit__ajouter"
+                          data-nom="Tiramisu"
+                          data-prix="11000"
+                          data-img="assets/images/tiramisu.jpg">
+                    + Panier
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <!-- 9 -->
+            <article class="carte-produit" data-category="fruits sur-mesure">
+              <span class="badge-produit badge-produit--nouveau">Nouveau</span>
+              <img class="carte-produit__image"
+                   src="assets/images/buche-mangue.jpg"
+                   alt="Bûche Mangue Passion — mousse mangue, insert passion et glaçage miroir"
+                   loading="lazy"
+                   width="400" height="300"
+                   onerror="this.src='https://placehold.co/400x300/F2A7BB/3D1C02?text=Buche+Mangue';this.onerror=null" />
+              <div class="carte-produit__corps">
+                <h3 class="carte-produit__nom">Bûche Mangue Passion</h3>
+                <p class="carte-produit__desc">Insert cœur passion, mousse mangue onctueuse et glaçage miroir tropical.</p>
+                <div class="carte-produit__pied">
+                  <span class="carte-produit__prix">16 500 F</span>
+                  <button class="carte-produit__ajouter"
+                          data-nom="Bûche Mangue Passion"
+                          data-prix="16500"
+                          data-img="assets/images/buche-mangue.jpg">
+                    + Panier
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <!-- 10 -->
+            <article class="carte-produit" data-category="mariage sur-mesure">
+              <span class="badge-produit badge-produit--populaire">Populaire</span>
+              <img class="carte-produit__image"
+                   src="assets/images/mariage-3etages.jpg"
+                   alt="Gâteau Mariage 3 Étages — pièce montée fondant ivoire avec roses en sucre"
+                   loading="lazy"
+                   width="400" height="300"
+                   onerror="this.src='https://placehold.co/400x300/F2A7BB/3D1C02?text=Mariage+3+Etages';this.onerror=null" />
+              <div class="carte-produit__corps">
+                <h3 class="carte-produit__nom">Mariage 3 Étages</h3>
+                <p class="carte-produit__desc">Pièce montée élégante, fondant ivoire, roses en sucre et dentelle comestible.</p>
+                <div class="carte-produit__pied">
+                  <span class="carte-produit__prix">45 000 F</span>
+                  <button class="carte-produit__ajouter"
+                          data-nom="Mariage 3 Étages"
+                          data-prix="45000"
+                          data-img="assets/images/mariage-3etages.jpg">
+                    + Panier
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <!-- 11 -->
+            <article class="carte-produit" data-category="bapteme">
+              <img class="carte-produit__image"
+                   src="assets/images/bapteme-etoiles.jpg"
+                   alt="Gâteau Baptême Étoiles — décor bleu et or avec étoiles scintillantes"
+                   loading="lazy"
+                   width="400" height="300"
+                   onerror="this.src='https://placehold.co/400x300/F2A7BB/3D1C02?text=Bapteme+Etoiles';this.onerror=null" />
+              <div class="carte-produit__corps">
+                <h3 class="carte-produit__nom">Baptême Étoiles</h3>
+                <p class="carte-produit__desc">Bleu tendre et or, étoiles scintillantes en sucre et prénom personnalisé.</p>
+                <div class="carte-produit__pied">
+                  <span class="carte-produit__prix">13 000 F</span>
+                  <button class="carte-produit__ajouter"
+                          data-nom="Baptême Étoiles"
+                          data-prix="13000"
+                          data-img="assets/images/bapteme-etoiles.jpg">
+                    + Panier
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <!-- 12 -->
+            <article class="carte-produit" data-category="chocolat anniversaire">
+              <img class="carte-produit__image"
+                   src="assets/images/caramel.jpg"
+                   alt="Gâteau Caramel — caramel beurre salé, crème diplomate et éclats de noix"
+                   loading="lazy"
+                   width="400" height="300"
+                   onerror="this.src='https://placehold.co/400x300/F2A7BB/3D1C02?text=Gateau+Caramel';this.onerror=null" />
+              <div class="carte-produit__corps">
+                <h3 class="carte-produit__nom">Gâteau Caramel</h3>
+                <p class="carte-produit__desc">Caramel beurre salé coulant, crème diplomate et éclats de noix dorées.</p>
+                <div class="carte-produit__pied">
+                  <span class="carte-produit__prix">9 000 F</span>
+                  <button class="carte-produit__ajouter"
+                          data-nom="Gâteau Caramel"
+                          data-prix="9000"
+                          data-img="assets/images/caramel.jpg">
+                    + Panier
+                  </button>
+                </div>
+              </div>
+            </article>
+
+          </div><!-- /grille-produits -->
+        </div>
+      </section>
+
+      <!-- ===================== HISTOIRE ===================== -->
+      <section id="histoire">
+        <div class="container">
+          <div class="histoire-contenu">
+
+            <div class="histoire-visuel">
+              <img src="assets/images/histoire.jpg"
+                   alt="L'équipe de La Maison des Gâteaux en cuisine"
+                   loading="lazy"
+                   width="560" height="460"
+                   onerror="this.src='https://placehold.co/560x460/3D1C02/FFF8F0?text=Notre+Histoire';this.onerror=null" />
+              <div class="histoire-badge-flottant">
+                <span class="histoire-badge-annee">+5 ans</span>
+                <span class="histoire-badge-texte">de passion</span>
+              </div>
+            </div>
+
+            <div class="histoire-texte">
+              <span class="histoire-tag">Notre histoire</span>
+              <h2>De génération<br>en <em>génération</em></h2>
+              <p>La Maison des Gâteaux est née d'une passion transmise au fil des années. Chaque matin à 5h, notre équipe d'artisans prépare vos créations avec des ingrédients locaux, sans compromis sur la qualité.</p>
+              <p>Du gâteau d'anniversaire à la pièce montée de mariage, chaque commande est traitée avec la même attention et le même amour du détail.</p>
+
+              <div class="histoire-valeurs">
+                <div class="valeur-item">
+                  <span class="valeur-icone">🌿</span>
+                  <div>
+                    <strong>Ingrédients locaux</strong>
+                    <span>Approvisionnement à moins de 150 km</span>
+                  </div>
+                </div>
+                <div class="valeur-item">
+                  <span class="valeur-icone">🚫</span>
+                  <div>
+                    <strong>Sans additifs</strong>
+                    <span>Ni colorant, ni conservateur artificiel</span>
+                  </div>
+                </div>
+                <div class="valeur-item">
+                  <span class="valeur-icone">🌅</span>
+                  <div>
+                    <strong>Frais du jour</strong>
+                    <span>Préparation chaque matin dès 5h</span>
+                  </div>
+                </div>
+                <div class="valeur-item">
+                  <span class="valeur-icone">♻️</span>
+                  <div>
+                    <strong>Emballages éco</strong>
+                    <span>Packaging 100% recyclable</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== SUR-MESURE ===================== -->
+      <section id="sur-mesure">
+        <div class="container">
+          <div id="sur-mesure-contenu">
+
+            <div class="visuel">
+              <img src="assets/images/sur-mesure.jpg"
+                   alt="Création d'un gâteau sur-mesure personnalisé pour un événement spécial à Dakar"
+                   loading="lazy"
+                   width="600" height="480"
+                   onerror="this.src='https://placehold.co/600x480/F2A7BB/3D1C02?text=Sur-Mesure';this.onerror=null" />
+            </div>
+
+            <div class="texte">
+              <h2 class="section-titre" style="text-align:left;">Votre gâteau,<br><em>votre histoire</em></h2>
+              <p>Chaque occasion mérite une création unique. Dites-nous votre envie, nous la transformons en chef-d'œuvre sucré livré à votre porte à Dakar.</p>
+
+              <form id="form-sur-mesure" novalidate>
+                <div class="champ">
+                  <label for="sm-prenom">Prénom *</label>
+                  <input type="text" id="sm-prenom" name="prenom"
+                         placeholder="Votre prénom" required autocomplete="given-name"/>
+                </div>
+
+                <div class="champ">
+                  <label for="sm-tel">Téléphone *</label>
+                  <input type="tel" id="sm-tel" name="telephone"
+                         placeholder="+221 77 XXX XX XX" required autocomplete="tel"/>
+                </div>
+
+                <div class="champ">
+                  <label for="sm-evenement">Type d'événement *</label>
+                  <select id="sm-evenement" name="evenement" required>
+                    <option value="" disabled selected>Choisir…</option>
+                    <option value="anniversaire">Anniversaire</option>
+                    <option value="mariage">Mariage</option>
+                    <option value="bapteme">Baptême</option>
+                    <option value="fiancailles">Fiançailles</option>
+                    <option value="autre">Autre</option>
+                  </select>
+                </div>
+
+                <div class="champ">
+                  <label for="sm-date">Date souhaitée *</label>
+                  <input type="date" id="sm-date" name="date" required />
+                </div>
+
+                <div class="champ">
+                  <label for="sm-description">Description de votre idée</label>
+                  <textarea id="sm-description" name="description" rows="4"
+                            placeholder="Couleurs, saveurs, nombre de personnes, décorations…"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primaire" style="width:100%;justify-content:center;margin-top:.5rem;">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/>
+                  </svg>
+                  Envoyer ma demande
+                </button>
+
+                <p id="form-confirmation" role="alert" aria-live="polite" style="display:none;"></p>
+              </form>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== PROCESS ===================== -->
+      <section id="process">
+        <div class="container">
+          <h2 class="section-titre">Comment commander&nbsp;?</h2>
+          <ol id="etapes">
+
+            <li id="etape-1">
+              <div class="etape-numero">1</div>
+              <svg class="etape-icone" width="40" height="40" viewBox="0 0 24 24" fill="none"
+                   stroke="#F2A7BB" stroke-width="1.5" aria-hidden="true">
+                <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+              </svg>
+              <h3 class="etape-titre">Choisir votre gâteau</h3>
+              <p class="etape-desc">Parcourez notre catalogue, filtrez par occasion et trouvez la création qui fait pétiller vos yeux.</p>
+            </li>
+
+            <li id="etape-2">
+              <div class="etape-numero">2</div>
+              <svg class="etape-icone" width="40" height="40" viewBox="0 0 24 24" fill="none"
+                   stroke="#F2A7BB" stroke-width="1.5" aria-hidden="true">
+                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/>
+              </svg>
+              <h3 class="etape-titre">Commander via WhatsApp</h3>
+              <p class="etape-desc">Envoyez-nous votre commande directement sur WhatsApp. Nous confirmons votre créneau de livraison en moins de 2 h.</p>
+            </li>
+
+            <li id="etape-3">
+              <div class="etape-numero">3</div>
+              <svg class="etape-icone" width="40" height="40" viewBox="0 0 24 24" fill="none"
+                   stroke="#F2A7BB" stroke-width="1.5" aria-hidden="true">
+                <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/>
+                <line x1="1" y1="10" x2="23" y2="10"/>
+              </svg>
+              <h3 class="etape-titre">Payer à la livraison</h3>
+              <p class="etape-desc">Réglez en espèces ou par Wave / Orange Money à la réception. Aucun paiement en avance.</p>
+            </li>
+
+          </ol>
+
+          <div class="process-cta">
+            <a href="https://wa.me/221709595351?text=Bonjour%2C%20je%20souhaite%20commander%20un%20g%C3%A2teau%20%F0%9F%8E%82"
+               target="_blank" rel="noopener" class="btn btn-primaire">
+              Commander sur WhatsApp
+            </a>
+            <p class="process-cta-meta">Réponse sous 2h · Lun–Sam 8h–20h · Livraison à Dakar</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== TÉMOIGNAGES ===================== -->
+      <section id="temoignages">
+        <div class="container">
+          <h2 class="section-titre">Ce que disent nos clients</h2>
+          <div id="avis-clients">
+
+            <article class="avis-carte">
+              <div class="avis-etoiles" aria-label="5 étoiles sur 5">★★★★★</div>
+              <blockquote class="avis-texte">
+                "Le gâteau d'anniversaire de ma fille était absolument magnifique et délicieux. Toute la famille a adoré. Livraison ponctuelle, présentation impeccable — je recommande les yeux fermés !"
+              </blockquote>
+              <div class="avis-auteur">
+                <div class="avis-auteur__avatar" aria-hidden="true"
+                     style="background:linear-gradient(135deg,#F2A7BB,#C9A84C);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:1.1rem;">F</div>
+                <div>
+                  <p class="avis-auteur__nom">Fatou Diallo</p>
+                  <p class="avis-auteur__lieu">Almadies, Dakar</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="avis-carte">
+              <div class="avis-etoiles" aria-label="5 étoiles sur 5">★★★★★</div>
+              <blockquote class="avis-texte">
+                "Pièce montée de mariage époustouflante. Les invités pensaient qu'elle venait d'une grande pâtisserie parisienne. Merci à toute l'équipe pour ce moment inoubliable."
+              </blockquote>
+              <div class="avis-auteur">
+                <div class="avis-auteur__avatar" aria-hidden="true"
+                     style="background:linear-gradient(135deg,#3D1C02,#C9A84C);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:1.1rem;">M</div>
+                <div>
+                  <p class="avis-auteur__nom">Mamadou Ndiaye</p>
+                  <p class="avis-auteur__lieu">Plateau, Dakar</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="avis-carte">
+              <div class="avis-etoiles" aria-label="4 étoiles sur 5">★★★★☆</div>
+              <blockquote class="avis-texte">
+                "Commande sur-mesure pour le baptême de mon fils, couleurs parfaites et gâteau très moelleux. Service client réactif sur WhatsApp. Je reviens sûrement pour le prochain événement !"
+              </blockquote>
+              <div class="avis-auteur">
+                <div class="avis-auteur__avatar" aria-hidden="true"
+                     style="background:linear-gradient(135deg,#F2A7BB,#3D1C02);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:1.1rem;">A</div>
+                <div>
+                  <p class="avis-auteur__nom">Aïssatou Sarr</p>
+                  <p class="avis-auteur__lieu">Parcelles Assainies, Dakar</p>
+                </div>
+              </div>
+            </article>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== FAQ ===================== -->
+      <section id="faq">
+        <div class="container">
+          <h2 class="section-titre">Questions fréquentes</h2>
+          <dl id="questions">
+
+            <div class="faq-item">
+              <dt class="faq-question" role="button" tabindex="0" aria-expanded="false">
+                Dans quelles zones de Dakar livrez-vous ?
+                <svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </dt>
+              <dd class="faq-reponse">
+                Nous livrons dans tout Dakar et sa banlieue : Plateau, Almadies, Mermoz, Ngor, Ouakam, Parcelles Assainies, Pikine, Guédiawaye, Thiès et Mbour. Frais de livraison variables selon la distance.
+              </dd>
+            </div>
+
+            <div class="faq-item">
+              <dt class="faq-question" role="button" tabindex="0" aria-expanded="false">
+                Quel est le délai minimum pour passer une commande ?
+                <svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </dt>
+              <dd class="faq-reponse">
+                Nous recommandons de commander au minimum 48 h à l'avance pour les gâteaux du catalogue. Pour les créations sur-mesure (mariage, baptême), prévoyez 5 à 7 jours afin que nous puissions réaliser votre pièce dans les meilleures conditions.
+              </dd>
+            </div>
+
+            <div class="faq-item">
+              <dt class="faq-question" role="button" tabindex="0" aria-expanded="false">
+                Quels modes de paiement acceptez-vous ?
+                <svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </dt>
+              <dd class="faq-reponse">
+                Nous acceptons le paiement à la livraison en espèces (CFA), par Wave et par Orange Money. Aucun pré-paiement n'est demandé pour les commandes standard. Pour les grandes pièces montées (mariages), un acompte de 30 % peut être requis.
+              </dd>
+            </div>
+
+            <div class="faq-item">
+              <dt class="faq-question" role="button" tabindex="0" aria-expanded="false">
+                Pouvez-vous ajouter un message personnalisé sur le gâteau ?
+                <svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </dt>
+              <dd class="faq-reponse">
+                Oui, absolument ! Précisez votre message lors de la commande WhatsApp ou via le formulaire sur-mesure. Nous l'inscrivons en glaçage ou en plaques de chocolat selon votre préférence, sans supplément de prix.
+              </dd>
+            </div>
+
+            <div class="faq-item">
+              <dt class="faq-question" role="button" tabindex="0" aria-expanded="false">
+                Vos gâteaux contiennent-ils des allergènes ?
+                <svg class="icone" viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </dt>
+              <dd class="faq-reponse">
+                La plupart de nos préparations contiennent gluten, œufs, lait et fruits à coque. Signalez-nous toute allergie lors de votre commande : nous ferons notre possible pour adapter la recette ou vous conseiller sur les alternatives disponibles.
+              </dd>
+            </div>
+
+          </dl>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer>
+      <div class="container">
+        <div class="footer-grille">
+
+          <div class="footer-marque">
+            <div style="color:#FFF8F0;font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;display:flex;align-items:center;gap:.75rem;">
+              <img src="assets/logo/logo.svg"
+                   alt="Logo La Maison des Gâteaux"
+                   width="38" height="38"
+                   onerror="this.outerHTML='<svg width=\'38\' height=\'38\' viewBox=\'0 0 36 36\' fill=\'none\' aria-hidden=\'true\'><circle cx=\'18\' cy=\'18\' r=\'18\' fill=\'#F2A7BB\'/><path d=\'M10 22c0-4 3-7 8-7s8 3 8 7\' stroke=\'#fff\' stroke-width=\'2\' stroke-linecap=\'round\'/><rect x=\'9\' y=\'22\' width=\'18\' height=\'5\' rx=\'2\' fill=\'#fff\'/><circle cx=\'18\' cy=\'11\' r=\'1.5\' fill=\'#C9A84C\'/></svg>'" />
+              La Maison des Gâteaux
+            </div>
+            <p>Pâtisserie artisanale à Dakar. Créations sur-mesure livrées avec amour pour tous vos événements.</p>
+            <div class="footer-socials" style="margin-top:1rem;">
+              <a href="https://wa.me/221709595351" target="_blank" rel="noopener" aria-label="WhatsApp">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.118 1.529 5.845L.057 23.625a.5.5 0 00.617.617l5.78-1.472A11.942 11.942 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+              </a>
+              <a href="#" aria-label="Instagram">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+              </a>
+              <a href="#" aria-label="Facebook">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+              </a>
+              <a href="#" aria-label="TikTok">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <h4>Navigation</h4>
+            <ul>
+              <li><a href="#catalogue">Catalogue</a></li>
+              <li><a href="#categories">Catégories</a></li>
+              <li><a href="#sur-mesure">Sur-mesure</a></li>
+              <li><a href="#process">Comment commander</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4>Occasions</h4>
+            <ul>
+              <li><a href="#categories">Anniversaire</a></li>
+              <li><a href="#categories">Mariage</a></li>
+              <li><a href="#categories">Baptême</a></li>
+              <li><a href="#categories">Fiançailles</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4>Nous contacter</h4>
+            <ul>
+              <li>
+                <a href="https://wa.me/221709595351" target="_blank" rel="noopener">
+                  📱 WhatsApp
+                </a>
+              </li>
+              <li>
+                <a href="mailto:contact@lamaisondegateaux.sn">
+                  ✉️ Email
+                </a>
+              </li>
+              <li><a href="#faq">❓ FAQ</a></li>
+              <li><a href="#temoignages">⭐ Avis clients</a></li>
+            </ul>
+          </div>
+
+        </div>
+
+        <div class="footer-bas">
+          <span>© 2024 La Maison des Gâteaux — Dakar. Tous droits réservés.</span>
+          <span>
+            <a href="#">Politique de confidentialité</a> ·
+            <a href="#">Conditions générales</a>
+          </span>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ===================== SIDEBAR PANIER ===================== -->
+    <div id="overlay" aria-hidden="true"></div>
+
+    <div id="panier-sidebar" aria-hidden="true" role="dialog" aria-label="Votre panier" aria-modal="true">
+      <div class="panier-header">
+        <h3>Mon panier</h3>
+        <button class="panier-fermer" id="panier-fermer" aria-label="Fermer le panier">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+
+      <div class="panier-items" id="panier-items">
+        <div class="panier-vide" id="panier-vide">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#F2A7BB" stroke-width="1.5" aria-hidden="true">
+            <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <path d="M16 10a4 4 0 01-8 0"/>
+          </svg>
+          <p>Votre panier est vide.<br>Ajoutez votre premier gâteau !</p>
+          <button class="btn btn-primaire" id="panier-voir-catalogue">Voir le catalogue</button>
+        </div>
+      </div>
+
+      <div class="panier-footer" id="panier-footer" style="display:none;">
+        <div class="panier-total">
+          <span>Total</span>
+          <span id="panier-total-montant">0 F</span>
+        </div>
+        <a id="panier-whatsapp" href="#" target="_blank" rel="noopener" class="panier-commander">
+          Commander via WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <!-- ===================== MODAL COMMANDE ===================== -->
+    <div id="modal-overlay" aria-hidden="true"></div>
+
+    <div id="modal-commande" aria-hidden="true" role="dialog"
+         aria-modal="true" aria-labelledby="modal-titre">
+      <div class="modal-boite">
+
+        <div class="modal-entete">
+          <div>
+            <h2 id="modal-titre">Finaliser ma commande</h2>
+            <p>Vos informations seront envoyées via WhatsApp</p>
+          </div>
+          <button id="modal-fermer" aria-label="Fermer la fenêtre">✕</button>
+        </div>
+
+        <div class="modal-corps">
+
+          <!-- Récapitulatif panier -->
+          <div class="modal-recap">
+            <h3 class="modal-section-titre">RÉCAPITULATIF</h3>
+            <div id="modal-recap-items"></div>
+            <div class="modal-total-ligne">
+              <span>Total</span>
+              <span id="modal-total-montant"></span>
+            </div>
+          </div>
+
+          <!-- Formulaire client -->
+          <div class="modal-formulaire">
+            <h3 class="modal-section-titre">VOS INFORMATIONS</h3>
+            <form id="form-commande" novalidate>
+
+              <div class="champ">
+                <label for="cmd-nom">Nom complet *</label>
+                <input type="text" id="cmd-nom"
+                       placeholder="Votre nom complet"
+                       required autocomplete="name" />
+              </div>
+
+              <div class="champ">
+                <label for="cmd-tel">Téléphone *</label>
+                <input type="tel" id="cmd-tel"
+                       placeholder="+221 77 XXX XX XX"
+                       required autocomplete="tel" />
+              </div>
+
+              <div class="champ">
+                <label for="cmd-adresse">Adresse de livraison *</label>
+                <input type="text" id="cmd-adresse"
+                       placeholder="Quartier, rue, point de repère…"
+                       required />
+              </div>
+
+              <div class="champ">
+                <label for="cmd-date">Date de livraison souhaitée *</label>
+                <input type="date" id="cmd-date" required />
+              </div>
+
+              <div class="champ">
+                <label for="cmd-note">Note (optionnel)</label>
+                <textarea id="cmd-note" rows="3"
+                          placeholder="Instructions spéciales, allergies, message sur le gâteau…"></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primaire"
+                      style="width:100%;justify-content:center;margin-top:.5rem;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/>
+                </svg>
+                Envoyer ma commande
+              </button>
+
+              <p class="modal-meta">
+                WhatsApp s'ouvrira avec votre commande pré-remplie · Réponse sous 2h · Lun–Sam 8h–19h
+              </p>
+
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="js/app.js"></script>
+  </body>
+</html>
