@@ -1,0 +1,11 @@
+{
+  "name": "lamaisondegateaux",
+  "version": "1.0.0",
+  "description": "Site vitrine La Maison des Gâteaux — Dakar",
+  "scripts": {
+    "build": "echo 'Site statique — aucun build requis'",
+    "start": "npx serve ."
+  },
+  "keywords": ["patisserie", "gateau", "dakar", "senegal"],
+  "license": "MIT"
+}
