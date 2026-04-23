@@ -1,0 +1,29 @@
+name: 🚀 Deploy → Hostinger
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: FTP Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: ⬇️ Checkout du code
+        uses: actions/checkout@v4
+
+      - name: 📤 Déploiement FTP vers Hostinger
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server:   ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./
+          server-dir: ${{ secrets.FTP_PATH }}
+          exclude: |
+            **/.git*
+            **/.git*/**
+            .github/**
+            README.md
